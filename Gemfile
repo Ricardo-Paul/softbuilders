@@ -8,7 +8,7 @@ gem 'react-rails'
 gem 'rack-cors', :require => 'rack/cors'
 gem 'devise'
 gem 'active_model_serializers', "~> 0.10.0"
-gem 'paperclip', '5.0.0.beta2'
+gem 'paperclip', '5.2.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
