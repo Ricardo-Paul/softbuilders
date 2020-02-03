@@ -10,7 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_31_231706) do
+ActiveRecord::Schema.define(version: 2020_02_03_174339) do
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title", default: ""
+    t.string "stacks", default: ""
+    t.string "description", default: ""
+    t.string "gitlink", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_projects_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-    before_action :find_user, :only => [:show, :update, :destroy]
     before_action :authenticate_with_token, :only => [:destroy, :update]
+    before_action :find_user, :only => [:show]
 
     def create
         @user = User.new(user_params)
@@ -21,14 +21,15 @@ class UsersController < ApplicationController
     end
 
     def update
-        if @user.update(user_params)
-        render json: @user, status: 200
+        if current_user.update(user_params)
+        render json: current_user, status: 200
         else
             render json: {errors: @user.errors}, status: 422
         end
     end
 
     def destroy
+        @user = current_user
         @user.destroy
         head 204
     end

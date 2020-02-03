@@ -12,4 +12,6 @@ class User < ApplicationRecord
         self.auth_token = Devise.friendly_token
       end while self.class.exists?(auth_token: auth_token)
     end
+
+    has_many :projects, dependent: :destroy
 end
