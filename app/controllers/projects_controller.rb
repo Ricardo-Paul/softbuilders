@@ -33,9 +33,8 @@ class ProjectsController < ApplicationController
         head 204
     end
 
-
     private
     def project_params
-        params.require(:project).permit(:title, :stacks, :description, :gitlink)
+        params.require(:project).permit(:title, :stacks, :description, :gitlink, company_attributes:[ :name])
     end
 end

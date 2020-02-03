@@ -21,10 +21,15 @@
 		"title": "Bring soft dev together",
 		"stacks": "rails react redux",
 		"description": "Create an environment where we can...",
-		"gitlink": "https://github.com/Ricardo-Paul/softbuilders/branches"
+		"gitlink": "https://github.com/Ricardo-Paul/softbuilders/branches",
+        "company_attributes": {
+            "name": "Unibank
+        }
 	}
 }
 
 <!-- Endpoints -->
 Create Project:     localhost:3000/api/v1/projects/
 Show        :      localhost:3000/api/v1/projects/?id=3
+
+Company.create(name:"Unibank", address:"Rue Lamarre, Petion Ville")
