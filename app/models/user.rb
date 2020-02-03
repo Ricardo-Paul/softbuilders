@@ -14,4 +14,6 @@ class User < ApplicationRecord
     end
 
     has_many :projects, dependent: :destroy
+    has_many :contributors
+    has_many :contributed_projects, :class_name => "Project", :through => :contributors, source: :project
 end

@@ -5,5 +5,6 @@ Rails.application.routes.draw do
     resource :sessions, :only => [:create, :destroy]
     resources :projects
     resources :companies
+    resources :contributors
   end
 end
