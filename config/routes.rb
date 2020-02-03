@@ -1,10 +1,8 @@
 Rails.application.routes.draw do
   devise_for :users
   scope '/api/v1' do
-    resources :users, :only => [:index, :create, :show, :update, :destroy] do 
-      resources :projects, :only => [:create]
-    end
+    resources :users, :only => [:index, :create, :show, :update, :destroy]
     resource :sessions, :only => [:create, :destroy]
-    resources :projects, :only => [:index]
+    resources :projects
   end
 end

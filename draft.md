@@ -26,4 +26,5 @@
 }
 
 <!-- Endpoints -->
-Create Project:     localhost:3000/api/v1/users/user_id/projects
+Create Project:     localhost:3000/api/v1/projects/
+Show        :      localhost:3000/api/v1/projects/?id=3
