@@ -6,5 +6,7 @@ Rails.application.routes.draw do
     resources :projects
     resources :companies
     resources :contributors
+
+    get 'profile', to: "users#fetch"
   end
 end

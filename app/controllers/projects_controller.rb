@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
     before_action :authenticate_with_token, :only => [:create, :update, :destroy]
 
     def index
-        projects = Project.all 
+        projects = Project.all.order("created_at DESC")
         render json: projects
     end
 

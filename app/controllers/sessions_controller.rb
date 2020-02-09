@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
         user_password = params[:sessions][:password]
 
         user = user_email.present? && User.find_by(email: user_email)
+
         if user.valid_password? user_password
             sign_in user, store: false
             user.generate_authentication_token!

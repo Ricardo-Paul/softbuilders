@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_with_token, :only => [:destroy, :update]
+    before_action :authenticate_with_token, :only => [:destroy, :update, :fetch]
     before_action :find_user, :only => [:show]
 
     def create
@@ -32,6 +32,10 @@ class UsersController < ApplicationController
         @user = current_user
         @user.destroy
         head 204
+    end
+
+    def fetch
+        render json: current_user
     end
 
     private 
