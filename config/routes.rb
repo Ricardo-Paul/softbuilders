@@ -8,5 +8,7 @@ Rails.application.routes.draw do
     resources :contributors
 
     get 'profile', to: "users#fetch"
+    post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
+    put '/upload' => 'users#upload'
   end
 end

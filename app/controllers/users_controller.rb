@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_with_token, :only => [:destroy, :update, :fetch]
+    before_action :authenticate_with_token, :only => [:destroy, :update, :fetch, :upload]
     before_action :find_user, :only => [:show]
 
     def create
@@ -17,14 +17,14 @@ class UsersController < ApplicationController
     end
 
     def show
-        render json: @user
+        render json: {user:@user, picture: @user.picture}
     end
 
     def update
         if current_user.update(user_params)
         render json: current_user, status: 200
         else
-            render json: {errors: @user.errors}, status: 422
+            render json: {errors: current_user.errors}, status: 422
         end
     end
 
@@ -35,7 +35,16 @@ class UsersController < ApplicationController
     end
 
     def fetch
-        render json: current_user
+        projects = Project.where('user_id', current_user.id)
+        render json: {current_user: current_user, picture: current_user.picture}
+    end
+
+    def upload
+        if current_user.update(picture: params[:picture])
+            render json:{user: current_user, picture: current_user.picture}
+        else
+            render json: ["User not updated"]
+        end
     end
 
     private 
@@ -44,7 +53,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-        params.require(:user).permit(:name, :email, :password, :password_confirmation)
+        params.require(:user).permit(:name, :email, :password, :password_confirmation, :picture)
     end
 end
 

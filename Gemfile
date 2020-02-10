@@ -5,7 +5,7 @@ ruby '2.6.3'
 
 # gem 'webpacker'
 gem 'react-rails'
-gem 'rack-cors', :require => 'rack/cors'
+gem 'rack-cors', '0.4.0'
 gem 'devise'
 gem 'active_model_serializers', "~> 0.10.0"
 gem 'paperclip', '5.2.0'

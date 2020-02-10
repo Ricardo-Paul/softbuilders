@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Ava = User.create(name:"Ava", email:"avapaul459@gmail.com", password:"1234567", password_confirmation:"1234567")
+Ava.avatar.attach(
+    io: File.open('./public/avatars/avatar.png'),
+    filename: 'avatar.png',
+    content_type: 'application/png'
+)
