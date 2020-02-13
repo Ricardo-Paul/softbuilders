@@ -6,9 +6,12 @@ Rails.application.routes.draw do
     resources :projects
     resources :companies
     resources :contributors
-
+    get 'picture/:id', to: "users#getpicture"
     get 'profile', to: "users#fetch"
     post '/rails/active_storage/direct_uploads', to: 'direct_uploads#create'
-    put '/upload' => 'users#upload'
+    put '/upload/:id' => 'users#upload'
+    
+
+    get 'myprojects', to: "users#getMyProjects"
   end
 end

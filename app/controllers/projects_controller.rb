@@ -1,8 +1,10 @@
 class ProjectsController < ApplicationController
-    before_action :authenticate_with_token, :only => [:create, :update, :destroy]
+    before_action :authenticate_with_token, :only => [:create, :update]
 
     def index
-        projects = Project.all.order("created_at DESC")
+        # projects = Project.filter_by_title(params[:keyword]) if params[:keyword]
+        # projects = Project.all.order("created_at DESC")
+        projects = params[:keyword] ? Project.filter_by_title(params[:keyword]) : Project.all.order("created_at DESC")
         render json: projects
     end
 
@@ -28,12 +30,11 @@ class ProjectsController < ApplicationController
     end
 
     def destroy
-        project = current_user.projects.find(params[:id])
+        project = Project.find(params[:id])
         project.destroy
         head 204
     end
 
-    
     private
     def project_params
         params.require(:project).permit(:title, :stacks, :description, :gitlink, company_attributes:[:name, :address])
